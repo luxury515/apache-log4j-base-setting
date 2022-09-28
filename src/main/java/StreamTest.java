@@ -1,11 +1,12 @@
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class StreamTest {
-    private static final Logger logger = LogManager.getLogger(StreamTest.class);
+
+    private static final Logger logger = LoggerFactory.getLogger(StreamTest.class);
 
     public static void main(String[] args) {
         //
@@ -17,15 +18,15 @@ public class StreamTest {
                 count++;
             }
         }
-        logger.debug("java 가 들어간 강좌 갯수 : {}" ,count);
+        logger.debug("java 가 들어간 강좌 갯수 : {}", count);
 
         long streamCount = classList.stream().filter(className -> className.contains("java"))
             .count();
 
-        logger.debug("Stream 으로 java count :{}" , streamCount);
+        logger.debug("Stream 으로 java count :{}", streamCount);
 
         Stream<String> streamString = Arrays.stream(new String[]{"oh", "kim", "lee"});
-        logger.debug("stream String:{}",streamString.toList());
+        logger.debug("stream String:{}", streamString.toList());
     }
 
 }
